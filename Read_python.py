@@ -69,27 +69,25 @@ if __name__ == "__main__":
     # an array of random numbers from numpy
     x = np.random.rand(N)
 
-    # an array of random numbers using our Random class
-    myx = []
-    for i in range(0,N):
-        myx.append(random.rand())
 
 
 
 
-    #WRITE RANDON NUMBERS TO FILE
-    writefile = open('random-mumbers.csv','w')
-    writer = csv.writer(writefile)
-    for x in myx:
-        num = str(x)
-        print(num)
-        writer.writerow([num])
+   
+
+    #READ RANDON NUMBER TO FILE
+    read_file = open ('random-mumbers.csv','r')
+    reader=csv.reader(read_file)
+    myx_new =[]
+    for line in reader:
+        value = (float (line[0])) 
+        myx_new.append (value)   
 
 
             
 
     # create histogram of our data
-    n, bins, patches = plt.hist(myx, 50, density=True, facecolor='g', alpha=0.75)
+    n, bins, patches = plt.hist(myx_new, 50, density=True, facecolor='g', alpha=0.75)
 
     # plot formating options
     plt.xlabel('x')
